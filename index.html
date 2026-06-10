@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Future Football accelerator</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Orbitron;
+}
+
+body{
+  background:radial-gradient(circle at top,#0b1220,#05060a);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:14px 18px;
+  background:rgba(10,12,20,0.6);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid #00f6ff33;
+  z-index:1000;
+}
+
+nav h1{
+  color:#00f6ff;
+  font-size:15px;
+}
+
+nav button{
+  background:transparent;
+  border:1px solid #00f6ff55;
+  color:#00f6ff;
+  padding:6px 10px;
+  margin-left:5px;
+  cursor:pointer;
+  font-size:11px;
+  transition:0.3s;
+}
+
+nav button:hover{
+  background:#00f6ff;
+  color:#000;
+}
+
+/* PAGES */
+.page{
+  display:none;
+  padding:110px 25px 60px;
+}
+.active{ display:block; }
+
+/* TITLE ANIMATION */
+.pageTitle{
+  text-align:center;
+  color:#00f6ff;
+  text-shadow:0 0 20px #00f6ff;
+  animation:fadeUp 0.7s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* HOME */
+.homeTitle{
+  font-size:62px;
+  margin-top:120px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:25px;
+}
+
+/* CARD */
+.card{
+  padding:16px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(0,246,255,0.15);
+  backdrop-filter:blur(8px);
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px) scale(1.03);
+  border-color:#00f6ff;
+  box-shadow:0 0 25px rgba(0,246,255,0.2);
+}
+
+h3{
+  color:#00f6ff;
+  margin-bottom:6px;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
+  opacity:0;
+  transition:0.25s ease;
+}
+
+.modal.show{ opacity:1; }
+
+.modalContent{
+  width:90%;
+  max-width:650px;
+  background:#0b0f1a;
+  border:1px solid #00f6ff;
+  border-radius:12px;
+  padding:22px;
+  transform:scale(0.8);
+  opacity:0;
+  transition:0.25s ease;
+}
+
+.modalContent.show{
+  transform:scale(1);
+  opacity:1;
+}
+
+/* BACKGROUND */
+.bg{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+.dot{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:#00f6ff;
+  border-radius:50%;
+  opacity:0.5;
+  animation: float linear infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh); opacity:0;}
+  50%{opacity:1;}
+  100%{transform:translateY(-10vh); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg" id="bg"></div>
+
+<nav>
+  <h1>FUTURE FOOTBALL</h1>
+  <div>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('players')">Idol Players You Can Learn From</button>
+    <button onclick="show('clubs')">Professional Clubs and facts</button>
+    <button onclick="show('skills')">Skills Lab</button>
+    <button onclick="show('improve')">Our Training System</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="page active">
+  <h2 class="pageTitle homeTitle">FUTURE FOOTBALL ACCELERATOR</h2>
+</section>
+
+<!-- PLAYERS -->
+<section id="players" class="page">
+  <h2 class="pageTitle">IDOL PLAYERS TO KNOW</h2>
+  <div id="playersGrid" class="grid"></div>
+</section>
+
+<!-- CLUBS -->
+<section id="clubs" class="page">
+  <h2 class="pageTitle">PRO CLUBS AND FACTS</h2>
+  <div id="clubsGrid" class="grid"></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="page">
+  <h2 class="pageTitle">SKILLS LAB TO PRACTICE</h2>
+
+  <div class="grid">
+    <div class="card"><h3>Dribbling</h3><p>Stepovers, elastico, feints, close control.To master,go in youtube or bing videos and search up the skill.Once you watch the full video practice at home</p></div>
+    <div class="card"><h3>Shooting</h3><p>Power shots, finesse, volleys, chips.Best to practice at a pitch</p></div>
+    <div class="card"><h3>Passing</h3><p>Through balls, one-touch passing, switches.</p></div>
+    <div class="card"><h3>Control</h3><p>First touch under pressure situations.</p></div>
+    <div class="card"><h3>juggling</h3><p>touches,control and skill required to do.</p></div>
+
+  </div>
+</section>
+
+<!-- TRAIN -->
+<section id="improve" class="page">
+  <h2 class="pageTitle">OUR EXCELLENT TRAINING SYSTEM</h2>
+
+  <div class="grid">
+    <div class="card"><h3>Ball Control</h3><p>Daily touches using both feet.This can be done at home or at a near pitch</p></div>
+    <div class="card"><h3>Finishing</h3><p>50+ shots per session from all angles.This increases your power and decreases chances to fail</p></div>
+    <div class="card"><h3>Speed</h3><p>Short explosive sprint training.What this does is making you a fast game changer</p></div>
+    <div class="card"><h3>IQ</h3><p>Watch and analyse pro matches daily.What this does is you now your role in what your playing</p></div>
+    <div class="card"><h3>Strength</h3><p>Core + legs + balance training.This includes 30 pushups a day,30 situps a day,6 planks and 30 squats</p></div>
+    <div class="card"><h3>Consistency</h3><p>Train 5–6 days weekly for growth.The more you do,the healthier you will become</p></div>
+    <div class="card"><h3>Stamina</h3><p>Run in your backyard and tap each end you run to.This will improve your stamina and decrese chances of deflation</p></div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modalContent" id="modalContent"></div>
+</div>
+
+<script>
+
+/* PAGE SWITCH + REPLAY ANIMATION */
+function show(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+
+  const page=document.getElementById(id);
+  page.classList.add('active');
+
+  const title=page.querySelector('.pageTitle');
+
+  if(title){
+    title.style.animation="none";
+    title.offsetHeight;
+    title.style.animation="fadeUp 0.7s ease";
+  }
+}
+
+/* PLAYERS (15) */
+const players=[
+{name:"Messi",info:"GOAT playmaker with elite vision and dribbling."},
+{name:"Ronaldo",info:"Legendary scorer with insane mentality."},
+{name:"Mbappé",info:"Fastest elite forward in football."},
+{name:"Haaland",info:"Clinical striker with perfect positioning."},
+{name:"De Bruyne",info:"Best passer in world football."},
+
+{name:"Bellingham",info:"Complete midfielder dominating games."},
+{name:"Vinícius Jr",info:"Explosive winger with elite speed."},
+{name:"Modrić",info:"Midfield genius with control and IQ."},
+{name:"Salah",info:"Deadly winger with consistency."},
+{name:"Kane",info:"Complete striker with playmaking ability."},
+
+{name:"Neymar",info:"Creative flair and skill moves."},
+{name:"Pedri",info:"Young midfield vision talent."},
+{name:"Musiala",info:"Elite dribbler with close control."},
+{name:"Saka",info:"Smart winger with balance."},
+{name:"Van Dijk",info:"Elite defender with leadership."}
+];
+
+/* CLUBS (7) */
+const clubs=[
+{name:"Real Madrid",info:"Real Madrid CF is one of the most successful and famous football clubs in the world, based in Madrid. Founded in 1902, the club competes in La Liga and is known for its rich history, iconic all-white kit, and record-breaking success in domestic and international competitions. Real Madrid has won numerous league titles and a record number of UEFA Champions League trophies. Throughout its history, the club has featured legendary players such as Cristiano Ronaldo, Zinedine Zidane, and Alfredo Di Stéfano. The team plays its home matches at the famous Santiago Bernabéu Stadium, which is one of the most iconic football stadiums in the world."},
+{name:"Man City",info:"Manchester City FC is a professional football club based in Manchester that competes in the Premier League. Founded in 1880, Manchester City has become one of the strongest teams in world football, especially in recent years. Known for their attacking style of play and possession-based football, the club has won multiple Premier League titles, domestic cups, and their first UEFA Champions League title in 2023. The team plays at the Etihad Stadium and has featured star players such as Kevin De Bruyne, Erling Haaland, and Sergio Agüero. Under the management of Pep Guardiola, Manchester City has established itself as one of the most successful and dominant clubs of the modern era."},
+{name:"Barcelona",info:"FC Barcelona is one of the most famous and successful football clubs in the world, based in Barcelona. Founded in 1899, the club competes in La Liga and is renowned for its attacking style of play, strong youth academy, and motto 'Més que un club' Meaning more than a club. Barcelona has won numerous domestic league titles, cups, and multiple UEFA Champions League trophies. The club is famous for producing and developing legendary players such as Lionel Messi, Xavi Hernández, and Andrés Iniesta. Barcelona plays its home matches at the iconic Camp Nou and is admired worldwide for its rich history, passionate fanbase, and commitment to attractive, possession-based football."},
+{name:"Bayern Munich",info:"FC Bayern Munich is Germany’s most successful football club and one of the biggest teams in world football. Based in Munich, the club was founded in 1900 and competes in the Bundesliga. Bayern Munich is known for its winning culture, consistent dominance in German football, and success across Europe, having won numerous Bundesliga titles and multiple UEFA Champions League trophies. The club has been home to legendary players such as Franz Beckenbauer, Thomas Müller, and Robert Lewandowski. Bayern plays its home matches at the modern and iconic Allianz Arena, famous for its color-changing exterior. The club is respected worldwide for its strong management, talented players, and long history of success."},
+{name:"Liverpool",info:"Liverpool FC stands out as one of football’s most emotional and history-rich clubs, built on tradition, resilience, and a famously passionate fan culture. Based in Liverpool, the club was founded in 1892 and competes in the Premier League. Unlike many modern clubs known mainly for recent dominance, Liverpool’s identity is deeply tied to iconic European nights, dramatic comebacks, and a strong sense of unity between players and supporters. The club has lifted multiple league titles and has a legendary record in the UEFA Champions League, including unforgettable finals that shaped its global reputation. Home matches are played at Anfield, where the anthem “You’ll Never Walk Alone” creates one of the most powerful atmospheres in sport. Liverpool’s legacy has been shaped by influential figures such as Steven Gerrard, known for leadership and loyalty, as well as modern stars like Mohamed Salah, who brought a new attacking era. The club is often defined less by pure dominance and more by spirit, comeback stories, and an emotional connection with its supporters worldwide."},
+{name:"PSG",info:"Paris Saint-Germain (PSG) is a modern football powerhouse built on ambition, investment, and star power rather than long historic dominance. Based in Paris, the club was founded in 1970 and competes in Ligue 1. PSG’s identity is strongly linked to its transformation into a global brand in the 2010s, when major investment helped it attract some of the biggest names in world football and dominate French domestic competitions. The club plays its home matches at the iconic Parc des Princes, where a passionate fanbase has grown alongside its rise in global popularity. Unlike clubs built over a century of tradition, PSG is often viewed as a symbol of the modern football era—focused on entertainment, global marketing, and superstar talent. It has featured world-renowned players such as Kylian Mbappé, Neymar Jr., and Lionel Messi. Despite heavy investment and domestic success, PSG is still chasing its first UEFA Champions League title, which remains the ultimate goal driving the club’s project."},
+{name:"Arsenal",info:"Arsenal FC is one of England’s most traditional and respected football clubs, known for its history of style, development, and consistency. Based in London, the club was founded in 1886 and competes in the Premier League. Arsenal is widely recognised for its identity of playing attractive, technical football and for building teams that focus on teamwork, discipline, and youth development rather than just spending heavily. The club’s home is the modern Emirates Stadium, though it still holds strong emotional ties to its historic former ground, Highbury. Arsenal has won multiple league titles and FA Cups and has a rich football legacy, including the famous “Invincibles” season, when they went unbeaten in the league. The club has been shaped by legendary figures such as Thierry Henry, Tony Adams, and modern stars like Bukayo Saka, who represents its current generation of talent. Arsenal is often seen as a club that values identity and long-term football philosophy as much as trophies."}
+];
+
+/* RENDER PLAYERS */
+const pg=document.getElementById("playersGrid");
+players.forEach(p=>{
+  const d=document.createElement("div");
+  d.className="card";
+  d.innerHTML=`<h3>${p.name}</h3><p>Click for info</p>`;
+  d.onclick=()=>openModal(p.name,p.info);
+  pg.appendChild(d);
+});
+
+/* RENDER CLUBS */
+const cg=document.getElementById("clubsGrid");
+clubs.forEach(c=>{
+  const d=document.createElement("div");
+  d.className="card";
+  d.innerHTML=`<h3>${c.name}</h3><p>Click for info</p>`;
+  d.onclick=()=>openModal(c.name,c.info);
+  cg.appendChild(d);
+});
+
+/* MODAL */
+function openModal(title,text){
+  const modal=document.getElementById("modal");
+  const content=document.getElementById("modalContent");
+
+  content.innerHTML=`
+    <h2 style="color:#00f6ff">${title}</h2>
+    <p>${text}</p>
+  `;
+
+  modal.style.display="flex";
+
+  setTimeout(()=>{
+    modal.classList.add("show");
+    content.classList.add("show");
+  },10);
+}
+
+document.getElementById("modal").onclick=(e)=>{
+  if(e.target.id==="modal"){
+    const modal=document.getElementById("modal");
+    const content=document.getElementById("modalContent");
+
+    modal.classList.remove("show");
+    content.classList.remove("show");
+
+    setTimeout(()=>modal.style.display="none",250);
+  }
+};
+
+/* BACKGROUND */
+const bg=document.getElementById("bg");
+for(let i=0;i<40;i++){
+  const d=document.createElement("div");
+  d.className="dot";
+  d.style.left=Math.random()*100+"vw";
+  d.style.animationDuration=(3+Math.random()*6)+"s";
+  bg.appendChild(d);
+}
+
+</script>
+
+</body>
+</html>
